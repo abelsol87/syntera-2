@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Methods with DOM</title>
+    <style>
+      .highlight {
+        background: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fruit List</h1>
+    <ul id="fruit-list">
+      <li>apple</li>
+      <li>banana</li>
+      <li>grape</li>
+      <li>kiwi</li>
+      <li>mango</li>
+      <li>peach</li>
+      <li>pear</li>
+      <li>plum</li>
+      <li>cherry</li>
+      <li>strawberry</li>
+      <li>blueberry</li>
+      <li>raspberry</li>
+      <li>blackberry</li>
+      <li>watermelon</li>
+      <li>cantaloupe</li>
+      <li>papaya</li>
+      <li>dragonfruit</li>
+      <li>pomegranate</li>
+      <li>lychee</li>
+      <li>guava</li>
+      <li>apricot</li>
+      <li>fig</li>
+      <li>date</li>
+      <li>melon</li>
+      <li>passionfruit</li>
+    </ul>
+
+    <h1>Scores</h1>
+    <ul id="scores">
+      <li>3</li>
+      <li>7</li>
+      <li>12</li>
+      <li>19</li>
+      <li>21</li>
+      <li>25</li>
+      <li>32</li>
+      <li>44</li>
+      <li>55</li>
+      <li>60</li>
+      <li>67</li>
+      <li>70</li>
+      <li>73</li>
+      <li>77</li>
+      <li>80</li>
+      <li>81</li>
+      <li>85</li>
+      <li>88</li>
+      <li>90</li>
+      <li>92</li>
+      <li>95</li>
+      <li>97</li>
+      <li>99</li>
+      <li>100</li>
+      <li>120</li>
+    </ul>
+
+    <script>
+      // ----------------------------
+      // Exercises (scrambled order)
+      // ----------------------------
+
+      const fruits = Array.from(document.querySelectorAll('#fruit-list li'))
+      const scores = Array.from(document.querySelectorAll('#scores li'))
+      // console.log(fruits)
+
+      // 1. Use map() to get all fruit names as an array of strings.
+      const fruitNames = fruits.map((li) => li.textContent)
+      console.log(fruitNames)
+
+      // 2. Use filter() to highlight fruits with more than 6 letters.
+      const fruitsMoreThan6letters = fruits.filter(
+        (li) => li.textContent.length > 6
+      )
+
+      fruitsMoreThan6letters.forEach((item) => {
+        item.classList.add('highlight')
+        // console.log(item)
+      })
+      // console.log(fruitsMoreThan6letters)
+
+      // 3. Use reduce() to calculate the sum of all scores.
+      const sumOfAllNumbers = scores.reduce((acc, li) => {
+        const scoreValue = Number(li.textContent)
+        return acc + scoreValue
+      }, 0)
+      console.log(sumOfAllNumbers)
+
+      // 4. Use some() to check if any score is over 100.
+      const scoreOver100 = scores.some((li) => {
+        return Number(li.textContent) > 100
+      })
+      console.log(scoreOver100)
+
+      // 5. Use every() to check if all scores are greater than 0.
+      const greaterThan0 = scores.every((li) => Number(li.textContent) > 0)
+      console.log(greaterThan0)
+
+      // 6. Use find() to get the first fruit that starts with "p".
+      const firstP = fruits.find((fruit) => fruit.textContent.startsWith('p'))
+      console.log(firstP)
+
+      // 7. Use findIndex() to get the index of the first score above 90.
+      const firstScoreOver90 = scores.findIndex(
+        (li) => Number(li.textContent) > 90
+      )
+      console.log(firstScoreOver90)
+
+      // 8. Use forEach() to log every fruit in uppercase.
+      const fruitsInCapital = fruits.forEach((fruit) => {
+        console.log(fruit.textContent.toUpperCase())
+      })
+
+      // 9. Use sort() to sort fruit names alphabetically and log them.
+      const sortFruit = fruits.map((fruit) => fruit.textContent)
+      const sortedByAlphabet = sortFruit.sort()
+      console.log(sortedByAlphabet)
+
+      // const fruitNames = fruits.map((li) => li.textContent);
+
+      // 10. Use flatMap() to split all fruit names into individual letters.
+      const flatFruits = fruits.flatMap((li) => li.textContent.split(''))
+      console.log(flatFruits)
+
+      // 11. Use includes() to check if "kiwi" is in the fruit list.
+      const kiwiInFruits = sortFruit.includes('kiwi')
+      console.log(kiwiInFruits)
+
+      // 12. Use concat() to merge fruit names with ["durian", "jackfruit"].
+      const mergedFruits = fruits.concat(['durian', 'jackfruit'])
+      console.log(mergedFruits)
+
+      // 13. Use slice() to get the first 5 fruits.
+      const first5Fruits = fruitNames.slice(0, 5)
+      console.log(first5Fruits)
+
+      // 14. Use splice() to remove the third fruit from a copy of the list.
+      const fruitCopy = [...fruitNames]
+      fruitCopy.splice(2, 1)
+      console.log(fruitCopy)
+
+      // 15. Use join() to join all fruit names into one string separated by commas.
+      const joinAllFruits = fruitNames.join(', ')
+
+      // 16. Use filter() to keep only scores greater than 80.
+      const scoresOver80 = scores.filter((li) => {
+        return Number(li.textContent) > 80
+      })
+      console.log(scoreOver100)
+
+      // 17. Use reduce() to find the highest score.
+      const highScores = scores.reduce((acc, li) => {
+        const score = Number(li.textContent)
+        console.log(score)
+        return acc
+      }, 0)
+      // 18. Use map() to convert scores into strings with " points" at the end.
+      const scoresWithPoints = scores.map((li) => li.textContent + ' Points')
+      console.log(scoresWithPoints)
+
+      // 19. Use some() to check if there are any even scores.
+      const evenScores = scores.some((li) => Number(li.textContent) % 2 === 0)
+      console.log(evenScores)
+
+      // 20. Use every() to check if all fruits contain at least 3 letters.
+      const fruitsLeast3letters = fruits.every(
+        (li) => li.textContent.length >= 3
+      )
+      console.log(fruitsLeast3letters)
+
+      // 21. Use find() to get the first score divisible by 5.
+      const divisibleBy5 = scores.find((li) => Number(li.textContent) % 5 === 0)
+      console.log(divisibleBy5)
+
+      // 22. Use findIndex() to get the index of the first fruit longer than 10 letters.
+      const firstFruitLongerThan5 = fruits.findIndex(
+        (li) => li.textContent.length > 10
+      )
+      console.log(firstFruitLongerThan5)
+
+      // 23. Use sort() to sort scores in descending order.
+      const sortInDescendingOrder = scores
+        .map((li) => Number(li.textContent))
+        .sort((a, b) => a - b)
+
+      console.log(sortInDescendingOrder)
+
+      // 24. Use slice() to get the last 5 scores.
+      const last5Scores = scores.map((li) => Number(li.textContent)).slice(-5)
+      console.log(last5Scores)
+
+      // 25. Use join() to join scores with a dash "-".
+      const joinScores = scores.map((li) => li.textContent).join('-')
+      console.log(joinScores)
+
+      // ----------------------------
+      // Solutions
+      // ----------------------------
+
+      //   const fruits = Array.from(document.querySelectorAll('#fruit-list li'));
+      //   const scores = Array.from(document.querySelectorAll('#scores li'));
+
+      // // 1
+      // const fruitNames = fruits.map((li) => li.textContent);
+
+      // // 2
+      // const longFruits = fruits.filter((li) => li.textContent.length > 6);
+      // longFruits.forEach((li) => li.classList.add('highlight'));
+
+      // // 3
+      // const totalScore = scores.reduce(
+      //   (sum, li) => sum + Number(li.textContent),
+      //   0
+      // );
+
+      // // 4
+      // const hasOver100 = scores.some((li) => Number(li.textContent) > 100);
+
+      // // 5
+      // const allPositive = scores.every((li) => Number(li.textContent) > 0);
+
+      // // 6
+      // const firstP = fruits.find((li) => li.textContent.startsWith('p'));
+
+      // // 7
+      // const indexAbove90 = scores.findIndex(
+      //   (li) => Number(li.textContent) > 90
+      // );
+
+      // // 8
+      // fruits.forEach((li) => console.log(li.textContent.toUpperCase()));
+
+      // // 9
+      // const sortedFruits = fruitNames.sort();
+      // console.log('Sorted fruits:', sortedFruits);
+
+      // // 10
+      // const letters = fruitNames.flatMap((name) => name.split(''));
+
+      // // 11
+      // const hasKiwi = fruitNames.includes('kiwi')
+      // console.log(hasKiwi)
+
+      // // 12
+      // const mergedFruits = fruitNames.concat(['durian', 'jackfruit']);
+
+      // // 13
+      // const firstFiveFruits = fruitNames.slice(0, 5);
+
+      // // 14
+      // const fruitCopy = [...fruitNames];
+      // fruitCopy.splice(2, 1);
+
+      // // 15
+      // const fruitString = fruitNames.join(', ');
+
+      // // 16
+      // const highScores = scores.filter((li) => Number(li.textContent) > 80);
+
+      // // 17
+      // const maxScore = scores.reduce(
+      //   (max, li) => Math.max(max, Number(li.textContent)),
+      //   -Infinity
+      // );
+
+      // // 18
+      // const scoreStrings = scores.map((li) => li.textContent + ' points');
+
+      // // 19
+      // const anyEven = scores.some((li) => Number(li.textContent) % 2 === 0);
+
+      // // 20
+      // const allThreeLetters = fruits.every((li) => li.textContent.length >= 3);
+
+      // // 21
+      // const firstDivBy5 = scores.find((li) => Number(li.textContent) % 5 === 0);
+
+      // // 22
+      // const indexLongFruit = fruits.findIndex(
+      //   (li) => li.textContent.length > 10
+      // );
+
+      // // 23
+      // const sortedScoresDesc = scores
+      //   .map((li) => Number(li.textContent))
+      //   .sort((a, b) => b - a);
+
+      // // 24
+      // const lastFiveScores = scores
+      //   .slice(-5)
+      //   .map((li) => Number(li.textContent));
+
+      // // 25
+      // const scoreString = scores.map((li) => li.textContent).join('-');
+
+      const users = [
+        { name: 'Alice', age: 30 },
+        { name: 'Bob', age: 20 },
+      ]
+      let result = {}
+      for (let user of users) {
+        result[user.name] = user.age // Mimics the reduce line
+        console.log(user)
+      }
+      console.log(result) // { Alice: 30, Bob: 20 }
+    </script>
+  </body>
+</html>

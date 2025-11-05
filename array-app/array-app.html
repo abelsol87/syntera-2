@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fruit Manager Challenge</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        padding: 4px;
+      }
+      .highlight {
+        background: yellow;
+      }
+      button {
+        margin: 5px;
+      }
+      #output {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🍎 Fruit Manager</h1>
+    <ul id="fruit-list">
+      <li>apple</li>
+      <li>banana</li>
+      <li>grape</li>
+      <li>kiwi</li>
+      <li>mango</li>
+      <li>peach</li>
+      <li>pear</li>
+      <li>plum</li>
+      <li>cherry</li>
+      <li>strawberry</li>
+      <li>blueberry</li>
+      <li>raspberry</li>
+      <li>blackberry</li>
+      <li>watermelon</li>
+      <li>cantaloupe</li>
+      <li>papaya</li>
+      <li>dragonfruit</li>
+      <li>pomegranate</li>
+      <li>lychee</li>
+      <li>guava</li>
+      <li>apricot</li>
+      <li>fig</li>
+      <li>date</li>
+      <li>melon</li>
+      <li>passionfruit</li>
+    </ul>
+
+    <div>
+      <button id="filter-long">Filter: Long Fruits (> 6 letters)</button>
+      <button id="highlight-a">Highlight: Starts with A</button>
+      <button id="sort">Sort Fruits (A–Z)</button>
+      <button id="count">Count Fruits</button>
+      <button id="join">Join Fruits into String</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+      const fruitList = document.querySelector('#fruit-list')
+      const fruits = Array.from(fruitList.querySelectorAll('li'))
+      const output = document.querySelector('#output')
+
+      // Store original fruit names
+      const originalNames = fruits.map((li) => li.textContent)
+
+      // Utility: refresh fruit list with an array of names
+      function renderFruits(names) {
+        fruitList.innerHTML = ''
+        names.forEach((name) => {
+          const li = document.createElement('li')
+          li.textContent = name
+          fruitList.appendChild(li)
+        })
+      }
+
+      // Reset list
+      document.querySelector('#reset').addEventListener('click', () => {
+        renderFruits(originalNames)
+        output.textContent = ''
+      })
+
+      // 1. Filter fruits longer than 6 letters
+      // 2. Highlight fruits starting with "a"
+      // 3. Sort fruits alphabetically
+      // 4. Count total fruits
+      // 5. Join all fruits into a single string
+
+      // // 1. Filter fruits longer than 6 letters
+      // document.querySelector('#filter-long').addEventListener('click', () => {
+      //   const filtered = originalNames.filter((f) => f.length > 6);
+      //   renderFruits(filtered);
+      //   output.textContent = `Showing ${filtered.length} long fruits.`;
+      // });
+
+      // // 2. Highlight fruits starting with "a"
+      // document.querySelector('#highlight-a').addEventListener('click', () => {
+      //   renderFruits(originalNames); // reset
+      //   const lis = Array.from(fruitList.querySelectorAll('li'));
+      //   const aFruits = lis.filter((li) =>
+      //     li.textContent.toLowerCase().startsWith('a')
+      //   );
+      //   aFruits.forEach((li) => li.classList.add('highlight'));
+      //   output.textContent = `Highlighted ${aFruits.length} fruits starting with "a".`;
+      // });
+
+      // // 3. Sort fruits alphabetically
+      // document.querySelector('#sort').addEventListener('click', () => {
+      //   const sorted = [...originalNames].sort();
+      //   renderFruits(sorted);
+      //   output.textContent = 'Fruits sorted alphabetically.';
+      // });
+
+      // // 4. Count total fruits
+      // document.querySelector('#count').addEventListener('click', () => {
+      //   const count = originalNames.reduce((acc) => acc + 1, 0);
+      //   output.textContent = `There are ${count} fruits in total.`;
+      // });
+
+      // // 5. Join all fruits into a single string
+      // document.querySelector('#join').addEventListener('click', () => {
+      //   const joined = originalNames.join(', ');
+      //   output.textContent = `All fruits: ${joined}`;
+      // });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+  line-height: 1.4;
+  padding: 16px;
+}
+#user-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+#user-container > div {
+  display: flex;
+  gap: 8px;
+}
+button {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background: #f0f0f0;
+}
+h3 {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+/* “cards” for posts and albums */
+.post-card,
+.album-box {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  background: #fff;
+}
+
+.photos-area img {
+  vertical-align: middle;
+}

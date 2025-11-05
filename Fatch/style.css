@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+#joke {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 1.2em;
+}
+
+button {
+  padding: 10px 20px;
+  font: size 1em;
+  cursor: pointer;
+}
