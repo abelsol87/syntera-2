@@ -138,6 +138,7 @@ const endpoint =
 
 let cities = []
 
+
 async function loadCities() {
     const response = await fetch(endpoint)
     const data = await response.json()
@@ -161,6 +162,43 @@ function findMatches(query, list) {
     return results
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function renderMatches(matches) {
+    console.log('RENDER: received', matches.length, 'items');
+
+    if (matches.length === 0) {
+        suggestions.innerHTML = `<li>No results</li>`;
+        console.log('RENDER: showed "No results"');
+        return;
+    }
+
+    // Build a small list (max 10) for readability
+    const html = matches.slice(0, 10).map((place, i) => {
+        const city = place.city;
+        const state = place.state;
+        const pop = numberWithCommas(place.population);
+
+        // each item: "City, State — 1,234,567"
+        return `
+      <li>
+        <span class="name">${city}, ${state}</span>
+        <span class="population">${pop}</span>
+      </li>
+    `;
+    }).join('');
+
+    suggestions.innerHTML = html;
+    console.log('RENDER: inserted HTML into <ul>');
+}
+
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log('Form Prevented')
@@ -168,4 +206,12 @@ form.addEventListener('submit', (e) => {
 
 input.addEventListener('input', () => {
     const text = input.value.trim()
+    const filteredCities = cities.filter((place) => {
+        const cityName = place.city.toLowerCase();
+        const stateName = place.state.toLowerCase();
+        return cityName.includes(text) || stateName.includes(text);
+    });
+
+    console.log('RESULT: Found', filteredCities.length, 'matches')
+    console.log('PREVIEW:', filteredCities.slice(0, 5).map(p => `${p.city}, ${p.state}`))
 })
