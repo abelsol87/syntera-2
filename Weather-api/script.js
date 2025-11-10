@@ -23,9 +23,11 @@ button.addEventListener('click', async () => {
 
     const lat = data.lat
     const lon = data.lon
+    const goId = data.geo_id
+
 
     result.innerHTML = `
-    <p><strong>${city}</strong></p>
+    <p><strong>${goId}</strong></p>
     <p>Latitude: ${lat}</p>
     <p>Longitude: ${lon}</p>`
 
